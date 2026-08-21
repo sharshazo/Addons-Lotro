@@ -1,0 +1,10 @@
+Lee el chat del juego en vivo y detecta automáticamente cuándo aceptás, avanzás, completás o abandonás una misión — sin que tengas que hacer nada. Todo se muestra traducido al español profesional (no traducción automática) en:
+
+- Una ventana principal con pestañas: misiones (agrupadas por zona, con buscador), Puntos de Interés, Tropas y Amenazas, y Colecciones (cofres, tesoros, marcadores enanos, etc.).
+- Un HUD chico flotante que lista tus misiones activas del mapa actual, coloreadas según su estado (celeste = activa, 
+- Una ventana principal con pestañas: misiones (agrupadas por zona, con buscador), Puntos de Interés, Tropas y Amenazas, y Colecciones (cofres, tesoros, marcadores enanos, etc.).
+- Un HUD chico flotante que lista tus misiones activas del mapa actual, coloreadas según su estado (celeste = activa, verde = completada).
+- Botones "Mapa"/"Ruta" en cada misión/punto que abren MoorMap o Waypoint directo en la coordenada correcta, con un solo clic.
+- Un ícono flotante arrastrable para abrir/cerrar todo con un clic.
+- Toggle de idioma Español/Inglés para toda la interfaz.
+- Se sincroniza con DeedTracker: muestra tus proezas en curso también en el HUD.
