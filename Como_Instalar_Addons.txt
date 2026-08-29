@@ -1,0 +1,126 @@
+====================================================================
+COMO INSTALAR LOS ADDONS (LUI / LOTRO_Quest_Assistant / DeedTracker)
+====================================================================
+
+RUTA BASE DE PLUGINS DEL JUEGO
+--------------------------------
+Todos los addons van dentro de esta carpeta (la crea el propio
+cliente de LOTRO la primera vez que activás plugins):
+
+  C:\Users\shars\OneDrive\Documentos\The Lord of the Rings Online\Plugins\
+
+Esta es la unica carpeta "Plugins" que el juego lee. Copiar un addon
+a cualquier otro lugar (Escritorio, esta carpeta de desarrollo, etc.)
+NO hace que el juego lo cargue.
+
+REGLA GENERAL IMPORTANTE
+--------------------------
+Cada addon tiene un archivo ".plugin" (XML) con una etiqueta
+<Package> que apunta a una ruta de carpetas EXACTA (ej.
+"LUI.src.main" o "CubePlugins.DeedTracker.Main"). Si renombrás la
+carpeta o la pegás un nivel mas arriba/abajo de lo que corresponde,
+el juego no encuentra el script y el addon simplemente no aparece
+en la lista de plugins. Por eso, para cada addon de abajo, respetá
+el nombre de carpeta EXACTO y el nivel EXACTO indicado.
+
+--------------------------------------------------------------------
+1) LUI
+--------------------------------------------------------------------
+Pegar la carpeta completa "LUI" (tal cual, con ese nombre) directo
+dentro de Plugins, quedando asi:
+
+  Plugins\LUI\LUI.plugin
+  Plugins\LUI\LUIReloader.plugin
+  Plugins\LUI\src\...           (todo el codigo)
+  Plugins\LUI\assets\...
+
+Origen (carpeta de trabajo/desarrollo de este proyecto):
+  addons proyect\LUI\   ->  copiar TODO su contenido dentro de
+  Plugins\LUI\ (o reemplazar la carpeta LUI\ entera).
+
+No renombrar la carpeta "LUI": el <Package> del plugin es
+"LUI.src.main", que exige exactamente ese nombre.
+
+--------------------------------------------------------------------
+2) LOTRO_Quest_Assistant
+--------------------------------------------------------------------
+Pegar la carpeta completa "LOTRO_Quest_Assistant" directo dentro de
+Plugins, quedando asi:
+
+  Plugins\LOTRO_Quest_Assistant\LOTRO_Quest_Assistant.plugin
+  Plugins\LOTRO_Quest_Assistant\QuestSync.plugin
+  Plugins\LOTRO_Quest_Assistant\Main.lua
+  Plugins\LOTRO_Quest_Assistant\Core\...
+  Plugins\LOTRO_Quest_Assistant\Data\...
+  Plugins\LOTRO_Quest_Assistant\UI\...
+  Plugins\LOTRO_Quest_Assistant\Resources\...
+  Plugins\LOTRO_Quest_Assistant\Persistence\...
+  Plugins\LOTRO_Quest_Assistant\Legacy\...
+  Plugins\LOTRO_Quest_Assistant\Utils\...
+
+Origen:
+  addons proyect\LOTRO_Quest_Assistant\  -> copiar TODO su contenido
+  dentro de Plugins\LOTRO_Quest_Assistant\.
+
+No renombrar la carpeta: ambos archivos .plugin (el del asistente y
+el de QuestSync) apuntan al mismo <Package>
+"LOTRO_Quest_Assistant.Main", que exige ese nombre de carpeta.
+
+--------------------------------------------------------------------
+3) DeedTracker
+--------------------------------------------------------------------
+Este es el mas particular: el archivo .plugin y la carpeta de
+codigo NO van al mismo nivel.
+
+  Plugins\CubePlugins\DeedTracker.plugin      <- el descriptor, SUELTO
+                                                  dentro de CubePlugins
+  Plugins\CubePlugins\DeedTracker\Main.lua    <- el codigo, UNA
+  Plugins\CubePlugins\DeedTracker\...            carpeta mas adentro
+  Plugins\CubePlugins\DeedTracker\DataFiles\...
+
+Es decir: dentro de Plugins\CubePlugins\ tiene que haber, uno al
+lado del otro:
+  - el archivo suelto "DeedTracker.plugin"
+  - la carpeta "DeedTracker" con todo el codigo adentro (Main.lua,
+    MainWin.lua, DataFiles\, Resources\, etc.)
+
+El <Package> es "CubePlugins.DeedTracker.Main": exige que la carpeta
+superior se llame "CubePlugins" y la carpeta de codigo, adentro,
+"DeedTracker" -- ambos nombres tal cual, sin variantes.
+
+(Nota de este proyecto: hubo en algun momento una segunda copia en
+Plugins\DeedTracker\DeedTracker\ -- esa ruta esta MAL, el juego no
+la carga con ese <Package>, y fue la que se elimino a proposito.)
+
+--------------------------------------------------------------------
+ACTIVAR LOS ADDONS DENTRO DEL JUEGO
+--------------------------------------------------------------------
+Copiar los archivos NO alcanza para que el addon este activo: hay
+que habilitarlo desde el juego.
+
+1. Entrar a LOTRO con el personaje.
+2. Escribir en el chat el comando:  /pluginmanager
+   (o abrir el Administrador de Plugins desde el menu de opciones,
+   segun version del cliente).
+3. Buscar en la lista "LUI", "LOTRO Quest Assistant" / "QuestSync" y
+   "Deed Tracker", y tildar la casilla de cada uno para activarlo.
+4. Cerrar el Administrador de Plugins. Si alguno no aparecio en la
+   lista, ejecutar /reloadui una vez con el juego ya abierto (a
+   veces el cliente solo escanea la carpeta Plugins al iniciar).
+
+Despues de activar o de pegar una actualizacion de archivos sobre un
+addon ya activo, siempre conviene ejecutar:
+
+  /reloadui
+
+para que tome los cambios sin tener que cerrar el juego.
+
+--------------------------------------------------------------------
+RESUMEN RAPIDO (copiar y pegar)
+--------------------------------------------------------------------
+Plugins\
+  LUI\                          <- carpeta LUI completa
+  LOTRO_Quest_Assistant\        <- carpeta LOTRO_Quest_Assistant completa
+  CubePlugins\
+    DeedTracker.plugin          <- archivo suelto
+    DeedTracker\                <- carpeta con el codigo
