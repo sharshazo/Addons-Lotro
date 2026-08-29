@@ -1,0 +1,130 @@
+====================================================================
+LUI - Documentacion del addon
+====================================================================
+
+QUE ES
+------
+LUI es un addon de reemplazo/mejora integral de la interfaz de usuario
+de LOTRO. No es un mini-addon de una sola funcion: reescribe y
+reemplaza gran parte de los paneles nativos del juego (vitales,
+inventario, barra de estado, chat, enciclopedia, crafteo, etc.) con
+versiones propias, mas personalizables. Se abre y configura desde un
+icono flotante en pantalla (el "launcher"), similar a como otros
+addons grandes (ej. MEM) exponen su menu principal.
+
+Carpeta principal: LUI/src/
+Punto de entrada: main.lua (importa todos los modulos y crea las
+ventanas iniciales al cargar el addon).
+
+MODULOS / CARPETAS Y PARA QUE SIRVE CADA UNO
+---------------------------------------------
+
+- Vitals/
+  Barras de vida/poder/moral propias: del jugador (self), del
+  objetivo actual (target), de companions, de fellowship (grupo) y de
+  raid. Incluye deteccion de clase (icono de clase superpuesto sobre
+  el retrato) y color de barra segun la clase del personaje. Tambien
+  resuelve el bug historico de "click sobre el marco para
+  seleccionar/targetear a un jugador": el widget nativo de Turbine
+  (EntityControl) que habilita el click-to-target se mantiene DEBAJO
+  del marco visual propio (z-order 0), mientras las piezas visuales
+  de LUI dejan pasar el click (SetMouseVisible(false)) para que llegue
+  al widget nativo.
+
+- Inventory/
+  Panel de inventario/mochila propio de LUI.
+
+- StatusBar/
+  Barra de estado / barra de accion inferior.
+
+- Chat/
+  Ventana(s) de chat personalizadas.
+
+- Cooldowns/
+  Seguimiento visual de tiempos de reutilizacion (cooldowns) de
+  habilidades.
+
+- Drops/
+  Notificaciones/registro de objetos que dropean los enemigos.
+
+- ExpiringEffects/
+  Barra/lista de efectos temporales activos sobre el personaje (buffs
+  y debuffs con tiempo).
+
+- Upkeep/
+  Panel de "mantenimiento" del personaje (curados, comida, etc.,
+  segun configuracion de LUI).
+
+- Crafting/
+  Interfaz personalizada para las ventanas de crafteo/profesiones.
+
+- Travel/
+  Ayudas de viaje/desplazamiento rapido.
+
+- Encyclopedia/
+  Enciclopedia interna de LUI: fichas de bestiario (bestiary_card),
+  fichas de recursos (resource_card), navegador de objetos
+  (item_browser), tabla de drops (drop_table) y una pestana adicional
+  de "Quests" (quest_browser / quest_card / QuestsTabPanel) que
+  muestra informacion de misiones dentro de la misma ventana de
+  enciclopedia. Consume datos generados en Data/ (bestiario, items,
+  npcs, recetas, skills).
+
+- Data/
+  Bases de datos generadas (bestiario, items, npcs, recetas, skills,
+  etc.) que alimentan la Enciclopedia. Incluye datos localizados en
+  espanol (por ejemplo Data/Bestiary/names_es.lua).
+
+- Settings/
+  Todo el sistema de configuracion de LUI: pantallas de opciones por
+  categoria (Settings/Tabs/...), el esquema de valores por defecto
+  (default_schema.lua), el proceso que reconstruye/valida la
+  configuracion guardada contra el esquema actual (rebuild_settings.lua)
+  y las migraciones que actualizan perfiles guardados con versiones
+  viejas del addon (Settings/migrations/).
+
+- Languages/
+  Diccionarios de traduccion de la propia interfaz de LUI: de.lua
+  (aleman), fr.lua (frances) y es.lua (espanol, ~1145 entradas).
+  Determinan en que idioma se muestran los textos de las ventanas de
+  LUI (Inventario, Opciones, Enciclopedia, etc.), independientemente
+  del idioma del cliente del juego.
+
+- Utils/
+  Utilidades compartidas: i18n.lua (deteccion/carga del idioma de
+  LUI, ver mas abajo), class_colors.lua (color por clase), icons.lua
+  (iconos de clase/lider de grupo), y helpers varios usados por el
+  resto de los modulos.
+
+- Launcher/
+  El icono flotante y su menu: punto de acceso visual a todas las
+  ventanas y opciones de LUI.
+
+- Assets/
+  Texturas/imagenes usadas por la interfaz.
+
+FUNCION DESTACADA: IDIOMA DE LA INTERFAZ (ESPANOL)
+----------------------------------------------------
+LUI permite elegir el idioma de SU PROPIA interfaz (no el del
+cliente del juego) desde Opciones > General > "Idioma", con tres
+valores: Automatico (idioma del cliente), English, Espanol. Esto se
+guarda en la configuracion global y aplica de inmediato a Inventario,
+Opciones, Enciclopedia y el resto de las ventanas de LUI, sin
+necesidad de reiniciar el juego (aunque un /reloadui asegura que
+todo quede recalculado). El modo "Automatico" intenta detectar el
+idioma del cliente; si no puede determinarlo con certeza, cae a
+ingles como modo mas seguro (nunca rompe la carga del addon).
+
+NOTAS TECNICAS RELEVANTES (de este proyecto de traduccion)
+-------------------------------------------------------------
+- El sistema de configuracion valida la config guardada contra un
+  "esquema" de valores por defecto (default_schema.lua) cada vez que
+  el addon carga; si falta algun campo esperado por una funcion
+  nueva, el addon puede fallar por completo al iniciar (incluyendo el
+  icono flotante) hasta corregir el esquema.
+- Varias pantallas (Enciclopedia, Vitales, Idioma) dependen de que
+  TODOS sus archivos relacionados esten importados correctamente
+  entre si; si un modulo nuevo se agrega pero no se registra en su
+  __init__.lua correspondiente, el addon puede fallar a mitad de
+  carga y dejar funciones posteriores (como el icono flotante) sin
+  crearse, aunque el error real este en otra parte del archivo.
