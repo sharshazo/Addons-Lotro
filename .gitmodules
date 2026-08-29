@@ -1,0 +1,9 @@
+[submodule "LUI-LOTRO"]
+	path = LUI-LOTRO
+	url = https://github.com/sharshazo/LUI-LOTRO.git
+[submodule "LOTRO_Quest_Assistant"]
+	path = LOTRO_Quest_Assistant
+	url = https://github.com/sharshazo/LOTRO_Quest_Assistant.git
+[submodule "DeedTracker-LOTRO"]
+	path = DeedTracker-LOTRO
+	url = https://github.com/sharshazo/DeedTracker-LOTRO.git

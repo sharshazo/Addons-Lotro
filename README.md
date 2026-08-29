@@ -1,0 +1,47 @@
+# Addons-Lotro
+
+Conjunto de addons de LOTRO (The Lord of the Rings Online) con soporte
+y contenido en espanol.
+
+Cada addon vive en su propio repositorio independiente y se incluye
+aqui como submodulo, para poder actualizarlo por separado sin
+mezclar el historial de los tres:
+
+- [**LUI-LOTRO**](https://github.com/sharshazo/LUI-LOTRO) - interfaz
+  de usuario personalizada para LOTRO (addon original de Geldahr),
+  con soporte de idioma espanol para Inventario, Opciones,
+  Enciclopedia y el resto de sus ventanas.
+- [**LOTRO_Quest_Assistant**](https://github.com/sharshazo/LOTRO_Quest_Assistant) -
+  asistente de misiones propio: traduce nombres, dialogos y
+  objetivos de las misiones al espanol, con HUD de seguimiento,
+  ventana de detalle tipo "libro" y ayudas de recoleccion.
+- [**DeedTracker-LOTRO**](https://github.com/sharshazo/DeedTracker-LOTRO) -
+  seguimiento de hazanas/deeds (addon original de Cube), con datos
+  de hazanas localizados, incluido espanol.
+
+## Como clonar todo junto
+
+```
+git clone --recurse-submodules https://github.com/sharshazo/Addons-Lotro.git
+```
+
+Si ya clonaste el repo sin `--recurse-submodules`, dentro de la
+carpeta ejecutar:
+
+```
+git submodule update --init --recursive
+```
+
+## Instalacion en el juego
+
+Cada submodulo trae su propia guia dentro de su repositorio. La
+carpeta de cada addon se copia dentro de:
+
+```
+Documentos\The Lord of the Rings Online\Plugins\
+```
+
+respetando el nombre de carpeta exacto que pide cada addon (ver el
+README/documentacion de cada submodulo para el detalle de cada uno,
+especialmente DeedTracker que tiene una ubicacion particular dentro
+de `Plugins\CubePlugins\`).
