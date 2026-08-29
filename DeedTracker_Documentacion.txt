@@ -1,0 +1,110 @@
+====================================================================
+DeedTracker (CubePlugins) - Documentacion del addon
+====================================================================
+
+QUE ES
+------
+DeedTracker es un addon de terceros (no desarrollado en este
+proyecto) que rastrea el progreso de las "hazanas" (deeds) del
+personaje: logros del juego que otorgan puntos de trasfondo (Virtues
+/ turbine points / rasgos) al completarse. Muestra que hazanas estan
+en progreso, cuanto falta para completarlas, y permite marcarlas o
+seguirlas manualmente. En este proyecto se le agrego contenido/datos
+en espanol y se reviso su estructura de carpetas, pero la logica del
+addon en si no fue escrita por este proyecto.
+
+Carpeta: CubePlugins/DeedTracker/  (dentro de Plugins/, es la unica
+carpeta valida que el juego carga: existio una copia duplicada en
+Plugins/DeedTracker/ que fue identificada como peor estructurada y
+eliminada; el nombre de carpeta debe mantenerse tal cual porque el
+archivo .plugin del addon tiene la ruta "Package" escrita a mano).
+Punto de entrada: Main.lua
+
+ARCHIVOS PRINCIPALES Y PARA QUE SIRVE CADA UNO
+------------------------------------------------
+- Main.lua: carga todos los modulos y datos del addon.
+- MainWin.lua: ventana principal donde se lista el arbol de hazanas
+  (por categoria) con su progreso.
+- Onscreen.lua: HUD en pantalla con las hazanas actualmente
+  seguidas/fijadas, similar en concepto al tracker de misiones.
+- MinimizedIcon.lua: icono flotante minimizado para abrir la ventana
+  principal sin ocupar espacio en pantalla.
+- CompletionWindow.lua: ventana/aviso que se muestra al completar una
+  hazana.
+- DeedTooltipWindow.lua: tooltip con el detalle de una hazana al
+  pasar el mouse.
+- DeedOrQuestWindow.lua: ventana para casos donde una entrada puede
+  corresponder tanto a una hazana como a una mision (desambiguacion
+  de contenido relacionado).
+- DisambiguateWindow.lua: ventana general para resolver ambiguedades
+  cuando un mismo nombre puede referirse a mas de una hazana/entrada.
+- StringTooltipWindow.lua: tooltip generico de texto reutilizado por
+  otras ventanas del addon.
+- CompanionImportWindow.lua: importa/comparte progreso de hazanas
+  entre distintos personajes (companions) de la misma cuenta.
+- Options.lua: panel de configuracion del addon (que mostrar, como
+  mostrarlo, filtros, etc.).
+- Commands.lua: comandos de barra de chat propios del addon
+  (ej. /deedtracker o similares) para controlarlo sin usar el mouse.
+- ChatLogger.lua: registra en el chat/log eventos relevantes de
+  progreso de hazanas.
+- DropDown.lua: componente de menu desplegable reutilizado por varias
+  ventanas del addon.
+- Timer.lua: manejo de temporizadores internos (actualizaciones
+  periodicas de progreso).
+- Images.lua: registro centralizado de iconos/imagenes usadas por el
+  addon.
+- Globals.lua: variables y constantes globales compartidas por todos
+  los modulos.
+- GeneralFunctions.lua: funciones auxiliares varias (formateo,
+  utilidades comunes) usadas en todo el addon.
+- PluginFunctions.lua: funciones de integracion con la API de
+  plugins del cliente del juego (Turbine.PluginData, eventos del
+  juego, etc.).
+- VindarPatch.lua: parche/ajuste especifico (compatibilidad o
+  correccion puntual documentada por el propio addon original).
+
+DataFiles/  (contenido de datos, sin logica)
+  Contiene, para CADA idioma soportado (EN, ES, DE, FR, RU), un set
+  paralelo de archivos con el mismo proposito:
+  - DeedData[IDIOMA].lua: texto completo (nombre, descripcion) de
+    cada hazana en ese idioma.
+  - DeedCategories[IDIOMA].lua: nombres de las categorias/arboles de
+    hazanas en ese idioma.
+  - DeedNamesToIDs[IDIOMA].lua: indice para encontrar el id interno
+    de una hazana a partir de su nombre en ese idioma.
+  - DeedObjectiveInfo[IDIOMA].lua: texto de los objetivos/pasos de
+    cada hazana en ese idioma.
+  - DeedInfoStrings[IDIOMA].lua: textos varios de interfaz (mensajes,
+    etiquetas) en ese idioma.
+  - ConflictingQuests[IDIOMA].lua: lista de misiones que entran en
+    conflicto con ciertas hazanas, en ese idioma.
+
+  Ademas, sin variante de idioma:
+  - DeedInfo.lua / DeedItems.lua / DeedLookupTables.lua: datos base
+    de hazanas e items relacionados, y tablas de busqueda cruzada.
+  - RegionInfo.lua: datos de regiones/zonas del juego.
+  - SessionPlayDeedIds.lua: ids de hazanas relacionadas con eventos
+    o contenido de temporada ("session play").
+
+FUNCIONES PRINCIPALES (resumen para el usuario final)
+--------------------------------------------------------
+1. Lista todas las hazanas del personaje organizadas por categoria,
+   con el progreso actual de cada una.
+2. Permite fijar/seguir hazanas especificas en un HUD en pantalla.
+3. Avisa al completar una hazana.
+4. Soporta multiples idiomas de contenido (incluido espanol) para
+   nombres, descripciones y objetivos de las hazanas.
+5. Permite importar/compartir progreso entre distintos personajes de
+   la misma cuenta.
+
+NOTA IMPORTANTE (pendiente, no corregido)
+--------------------------------------------
+Los archivos de datos en aleman, ruso y frances
+(DataFiles/DeedDataDE.lua, DeedDataRU.lua,
+DeedObjectiveInfoFR.lua, DeedObjectiveInfoRU.lua) tienen errores de
+sintaxis preexistentes (secuencias de escape invalidas en el texto)
+en el addon original, detectados durante una revision con el
+compilador de Lua. No fueron introducidos por este proyecto y no
+afectan al contenido en espanol ni ingles, pero quedan pendientes de
+decision sobre si corregirlos.
