@@ -7,9 +7,6 @@
 [submodule "DeedTracker-LOTRO"]
 	path = DeedTracker-LOTRO
 	url = https://github.com/sharshazo/DeedTracker-LOTRO.git
-[submodule "LOTRO_Chat_Narrator"]
-	path = LOTRO_Chat_Narrator
-	url = https://github.com/sharshazo/LOTRO_Chat_Narrator.git
 [submodule "Narrador_IA"]
 	path = Narrador_IA
 	url = https://github.com/sharshazo/Narrador_IA.git

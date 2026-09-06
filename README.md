@@ -18,9 +18,6 @@ mezclar el historial de los tres:
 - [**DeedTracker-LOTRO**](https://github.com/sharshazo/DeedTracker-LOTRO) -
   seguimiento de hazanas/deeds (addon original de Cube), con datos
   de hazanas localizados, incluido espanol.
-- [**LOTRO_Chat_Narrator**](https://github.com/sharshazo/LOTRO_Chat_Narrator) -
-  addon complementario que reenvia el chat relevante del juego al
-  narrador de voz (ver Narrador_IA, abajo).
 - [**Narrador_IA**](https://github.com/sharshazo/Narrador_IA) - app de
   Windows que le pone voz a LOTRO_Quest_Assistant: boton "Narrar" para
   escuchar cualquier mision al toque, historias ambientales al azar
