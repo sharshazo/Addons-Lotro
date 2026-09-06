@@ -28,19 +28,6 @@ mezclar el historial de los tres:
   neuronales gratis en espanol. Instalador de un click, sin saber
   programar.
 
-## Como clonar todo junto
-
-```
-git clone --recurse-submodules https://github.com/sharshazo/Addons-Lotro.git
-```
-
-Si ya clonaste el repo sin `--recurse-submodules`, dentro de la
-carpeta ejecutar:
-
-```
-git submodule update --init --recursive
-```
-
 ## Instalacion en el juego
 
 Cada submodulo trae su propia guia dentro de su repositorio. La
