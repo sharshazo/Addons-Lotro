@@ -55,3 +55,14 @@ de `Plugins\CubePlugins\`).
 es un programa aparte de Windows (LOTRO no le permite a ningun addon
 reproducir audio). Se instala en cualquier carpeta con su propio
 `Instalar.bat` de un click -- ver su README para el detalle.
+
+## Ultima actualizacion
+
+**2026-09-07** -- Arreglo de raiz en la recoleccion de LOTRO_Quest_Assistant
+(Minero/Lenador/Granjero/Erudito): los items adquiridos en LOTRO llegan al
+addon como links clickeables con metadatos incrustados, no como texto
+plano -- esto hacia que la ventana de guardar ubicacion no apareciera al
+recolectar practicamente nada. Tambien se corrigio un caso donde un punto
+guardado en Eregion se etiquetaba con el mapa equivocado (Musgovilla) por
+un limite de zona invertido en los datos de MoorMap. El paquete de
+descarga de arriba ya incluye estos arreglos.
