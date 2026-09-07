@@ -3,6 +3,18 @@
 Conjunto de addons de LOTRO (The Lord of the Rings Online) con soporte
 y contenido en espanol.
 
+## Descarga rapida
+
+**[Descargar el paquete completo (.zip)](https://github.com/sharshazo/Addons-Lotro/releases/latest)**
+-- incluye LOTRO_Quest_Assistant (QuestSync) + Narrador_IA listos para
+instalar, con una guia paso a paso adentro (`LEEME_PRIMERO.txt`). No hace
+falta git ni saber nada de submodulos: es un solo archivo.
+
+*(El boton verde "Code > Download ZIP" de arriba de la pagina de GitHub
+NO sirve para este repositorio -- cada addon vive en su propio
+repositorio aparte y ese boton no trae ese contenido. Usa el link de
+arriba.)*
+
 Cada addon vive en su propio repositorio independiente y se incluye
 aqui como submodulo, para poder actualizarlo por separado sin
 mezclar el historial de los tres:
