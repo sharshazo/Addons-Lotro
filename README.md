@@ -36,6 +36,14 @@ mezclar el historial de los tres:
   mientras jugas, y boton de silenciar/activar -- todo con voces
   neuronales gratis en espanol. Instalador de un click, sin saber
   programar.
+- [**WorldMap_Addon**](WorldMap_Addon) ("Mapa del Mundo") - mapa
+  interactivo de la Tierra Media con las 59 zonas en espanol (nombre,
+  nivel e imagen de cada zona), buscador, filtro de expansiones y
+  comando `/mapa`. Con LOTRO_Quest_Assistant muestra una moneda dorada
+  con tus misiones activas en cada zona, calaveras de mazmorra /
+  incursion, la lista de esas misiones al hacer clic en la zona, y un
+  solo icono flotante que agrupa Mapa, Libro y Lupa. A diferencia de
+  los demas, vive directo en esta carpeta (no es submodulo).
 
 ## Instalacion en el juego
 
@@ -57,6 +65,23 @@ reproducir audio). Se instala en cualquier carpeta con su propio
 `Instalar.bat` de un click -- ver su README para el detalle.
 
 ## Ultima actualizacion
+
+**2026-09-24** -- Nuevas funciones en varios addons:
+
+- **WorldMap_Addon (v2.5.0)**, nuevo en este repositorio: moneda dorada
+  con la cantidad de misiones ACTIVAS por zona, calaveras de mazmorra e
+  incursion, lista de misiones activas al hacer clic en una zona (con
+  logos de grupo/mazmorra/incursion) y un solo icono flotante que
+  despliega Mapa, Libro y Lupa.
+- **LOTRO_Quest_Assistant**: misiones de grupo con color y logo propio
+  (tamano oficial y a que mazmorra/incursion ir), filtro de grupo, boton
+  "Buscar grupo", etiqueta Diaria/Semanal y marca de "tu nivel".
+- **LUI-LOTRO**: nombres del botin con el color de su calidad, borde
+  dorado para Incomparables/Legendarios, historial de botin de la sesion
+  (`/botin`) y selector de idioma.
+- **DeedTracker-LOTRO**: nueva pagina "Por zona" con una pestana por
+  zona que junta las hazanas de la region, sus instancias y su
+  reputacion.
 
 **2026-09-07** -- Arreglo de raiz en la recoleccion de LOTRO_Quest_Assistant
 (Minero/Lenador/Granjero/Erudito): los items adquiridos en LOTRO llegan al
